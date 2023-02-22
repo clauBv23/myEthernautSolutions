@@ -13,10 +13,13 @@ contract Force {
 */
 }
 
+// deploy contract and send some ether
 contract SendEthDestructingContract {
-  address payable contractAddr = payable(0xd7Ec5d29851ff6f4617701a21AF7b17e82d8BaB4);
+  address payable contractAddr = payable(0xBC8f28d5Ff3eFE17053a6B82b3566d13E94A3848);
 
-  function destructCOntractToSendEth() external {
+  constructor() payable {}
+
+  function destructContractToSendEth() external {
     selfdestruct(contractAddr);
   }
 
