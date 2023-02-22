@@ -4,5 +4,6 @@
 
 
 // in the browser console 
-// var pass = await web3.eth.getStorageAt(contractAddr, 1)
+// var addr = contract.address
+// var pass = await web3.eth.getStorageAt(addr, 1)
 // await contract.unlock(pass)
