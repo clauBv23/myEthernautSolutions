@@ -84,7 +84,7 @@ contract Solution {
   function callEnter() public {
     // initialize the trick contract
     _createTrick();
-    // set to true the GatekeeperThree contarct allow_entrance
+    // set to true the GatekeeperThree contract allow_entrance
     _getAllowance();
     // set this contract as the GatekeeperThree owner
     _getOwnership();
