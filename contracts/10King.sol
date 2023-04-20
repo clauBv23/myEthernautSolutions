@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "hardhat/console.sol";
+
 contract King {
   address king;
   uint public prize;
@@ -14,8 +16,6 @@ contract King {
 
   receive() external payable {
     require(msg.value >= prize || msg.sender == owner);
-
-    console.log("here2");
 
     payable(king).transfer(msg.value);
     king = msg.sender;
